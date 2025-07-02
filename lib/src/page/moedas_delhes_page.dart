@@ -15,7 +15,7 @@ class MoedasDelhesPage extends StatefulWidget {
 class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
   late MoedaNacionalidadeViewmodels moedaNacionalidade;
   final _form = GlobalKey<FormState>();
-  late int quantidade = 0;
+  late int  quantidade = 0;
   final _valor = TextEditingController();
 
   @override
@@ -102,6 +102,8 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
                 },
                 onChanged: (value) {
                   setState(() {
+                    
+
 
                   });
                 },
