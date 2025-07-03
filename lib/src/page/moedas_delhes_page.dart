@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class MoedasDelhesPage extends StatefulWidget {
   final Moeda moeda;
 
-  MoedasDelhesPage({super.key, required this.moeda});
+  const MoedasDelhesPage({super.key, required this.moeda});
 
   @override
   State<MoedasDelhesPage> createState() => _MoedasDelhesPageState();
@@ -15,7 +15,7 @@ class MoedasDelhesPage extends StatefulWidget {
 class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
   late MoedaNacionalidadeViewmodels moedaNacionalidade;
   final _form = GlobalKey<FormState>();
-  late int  quantidade = 0;
+  late double quantidade = 0.0;
   final _valor = TextEditingController();
 
   @override
@@ -28,7 +28,7 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.moeda.nome}'),
+        title: Text(widget.moeda.nome),
         centerTitle: true,
       ),
       body: Padding(
@@ -36,20 +36,20 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: 24),
+              padding: const EdgeInsets.only(bottom: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                    child: Image.asset(widget.moeda.icone),
                     width: 50,
+                    child: Image.asset(widget.moeda.icone),
                   ),
                   Container(
                     width: 10,
                   ),
                   Text(
-                    '${moedaNacionalidade.moedaBrasil()}',
+                    moedaNacionalidade.moedaBrasil(),
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
@@ -60,27 +60,33 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
                 ],
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                child: Text(
-                  '$quantidade ${widget.moeda.sigla} ',
-                  style: TextStyle(fontSize: 20, color: Colors.teal),
-                ),
-                margin: EdgeInsets.only(bottom: 24),
-                padding: EdgeInsets.all(12),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.teal.withOpacity(0.05),
-                ),
-              ),
-            ),
+            (quantidade > 0)
+                ? SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 24),
+                      padding: const EdgeInsets.all(12),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 0, 150, 135)
+                            .withOpacity(0.05),
+                      ),
+                      child: Text(
+                        '$quantidade ${widget.moeda.sigla} ',
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.teal),
+                      ),
+                    ),
+                  )
+                : Container(
+                    margin: EdgeInsets.only(bottom: 24),
+                  ),
             Form(
               key: _form,
               child: TextFormField(
                 controller: _valor,
-                style: TextStyle(fontSize: 22),
-                decoration: InputDecoration(
+                style: const TextStyle(fontSize: 22),
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Valor',
                   prefixIcon: Icon(Icons.monetization_on_outlined),
@@ -100,13 +106,28 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
                     return null;
                   }
                 },
-                onChanged: (value) {
+                onChanged: (Value) {
                   setState(() {
-                    
-
-
+                    quantidade = (Value.isEmpty)
+                        ? 0.0
+                        : double.parse(Value) / widget.moeda.preco;
+                    //quantidade = double.parse(Value) / widget.moeda.preco;
+                    print(quantidade);
                   });
                 },
+              ),
+            ),
+            Container(
+              alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(top: 24),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.check),
+                  ],
+                ),
               ),
             ),
           ],

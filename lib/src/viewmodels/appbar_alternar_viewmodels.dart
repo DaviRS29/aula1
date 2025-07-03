@@ -10,17 +10,17 @@ class AppBarAlternar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return selecionadas.selecionadas.isEmpty
         ? AppBar(
-      title: Text('Cripto Moeda'),
+      title: const Text('Cripto Moeda'),
       centerTitle: true,
     )
         : AppBar(
       leading: IconButton(
         onPressed: () => selecionadas.limparSelecionadas(),
-        icon: Icon(Icons.close),
+        icon: const Icon(Icons.close),
       ),
       title: Text(
         '${selecionadas.selecionadas.length} selecionadas',
-        style: TextStyle(
+        style: const TextStyle(
             color: Colors.black87,
             fontSize: 20,
             fontWeight: FontWeight.bold),
@@ -28,10 +28,10 @@ class AppBarAlternar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.blueGrey.shade50,
       elevation: 1,
       centerTitle: true,
-      iconTheme: IconThemeData(color: Colors.black87),
+      iconTheme: const IconThemeData(color: Colors.black87),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

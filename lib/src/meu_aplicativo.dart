@@ -13,7 +13,7 @@ class MeuAplicativo extends StatelessWidget {
         primarySwatch: Colors.indigo,
         useMaterial3:false,
       ),
-      home: MoedasPage(),
+      home: const MoedasPage(),
     );
   }
 }

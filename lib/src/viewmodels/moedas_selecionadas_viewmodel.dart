@@ -2,7 +2,7 @@ import 'package:myapp/src/models/moeda.dart';
 import 'package:flutter/material.dart';
 
 class MoedasSelecionadasViewmodel extends ChangeNotifier {
-  late List<Moeda> _selecionadas = [];
+  late final List<Moeda> _selecionadas = [];
 
   List<Moeda> get selecionadas => _selecionadas;
 

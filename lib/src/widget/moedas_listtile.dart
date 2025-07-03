@@ -9,7 +9,7 @@ class MoedasListtile extends StatelessWidget {
 
   final VoidCallback onTap;
 
-  MoedasListtile({
+  const MoedasListtile({
     super.key,
     required this.moeda,
     required this.onTap,
@@ -22,22 +22,22 @@ class MoedasListtile extends StatelessWidget {
     NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
 
     return ListTile(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(12),
         ),
       ),
       leading: isSelected
-          ? CircleAvatar(
+          ? const CircleAvatar(
               child: Icon(Icons.check),
             )
           : SizedBox(
-              child: Image.asset(moeda.icone),
               width: 40,
+              child: Image.asset(moeda.icone),
             ),
       title: Text(
         moeda.nome,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 17,
           fontWeight: FontWeight.w500,
         ),

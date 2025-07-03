@@ -39,15 +39,15 @@ class _MoedasPageState extends State<MoedasPage> {
               },
             );
           },
-          padding: EdgeInsets.all(8),
-          separatorBuilder: (_, __) => Divider(),
+          padding: const EdgeInsets.all(8),
+          separatorBuilder: (_, __) => const Divider(),
           itemCount: tabela.length),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: selecionadas.selecionadas.isNotEmpty
           ? FloatingActionButton.extended(
               onPressed: () {},
-              icon: Icon(Icons.star),
-              label: Text(
+              icon: const Icon(Icons.star),
+              label: const Text(
                 'Favoritar',
                 style: TextStyle(
                   letterSpacing: 0,
