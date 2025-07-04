@@ -10,7 +10,7 @@ class AppBarAlternar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return selecionadas.selecionadas.isEmpty
         ? AppBar(
-      title: const Text('Cripto Moeda'),
+      title: const Text('Cripto Moedaa'),
       centerTitle: true,
     )
         : AppBar(

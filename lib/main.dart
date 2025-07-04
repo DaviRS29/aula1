@@ -7,7 +7,7 @@ void main() {
   runApp(
     ChangeNotifierProvider(
       create: (context) => MoedasSelecionadasViewmodel(),
-      child: const MeuAplicativo(),
+      child:  MeuAplicativo(),
     ),
   );
 }

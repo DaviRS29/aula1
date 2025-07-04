@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 class MoedasDelhesPage extends StatefulWidget {
   final Moeda moeda;
 
-  const MoedasDelhesPage({super.key, required this.moeda});
+  MoedasDelhesPage({super.key, required this.moeda});
 
   @override
   State<MoedasDelhesPage> createState() => _MoedasDelhesPageState();
@@ -17,6 +17,17 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
   final _form = GlobalKey<FormState>();
   late double quantidade = 0.0;
   final _valor = TextEditingController();
+
+  comprar() {
+    if (_form.currentState!.validate()) {
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Compra realizada com sucesso'),
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -121,11 +132,22 @@ class _MoedasDelhesPageState extends State<MoedasDelhesPage> {
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(top: 24),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  comprar();
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.check),
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        'Comprar',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
